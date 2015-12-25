@@ -1,0 +1,10 @@
+Iterative Development Platform
+
+* Allow user to input what subreddits they want, the upvote amount to qualify a post, and the reddit account to send the message to. Save results to a config file.
+* Have script that pulls scrapes posts from Reddit API and formats them appropriately
+* Output appropriately
+
+
+For way later
+* Reddit account verification, so people don't send digests to accounts they don't own
+* GUI version of app
