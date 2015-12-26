@@ -47,12 +47,33 @@ def show_current_config(cfg_file, config):
 
 show_current_config(cfg_file, config)
 
+#Iterates through all currents subs and asks user if they want them
+#removed
+def remove_subs(config):
+    for option in config.options('Subs'):
+        print 'Would you like to remove', option, '? (y/n)'
+        should_remove = check_input()
+        if should_remove:
+            config.remove_option('Subs',option)
+    #TODO not displaying correctly. config.write is causing data to duplicate
+    empty_file = open('config.ini', 'r+')
+    empty_file.truncate()
+    config.write(empty_file)
+
+#Iterates through current results, and then asks
+#if more should be added on
+
 def modify_subs(cfg_file, config):
     #TODO iterate through current results, and then allow for more
     #to be added on
-    stub = 0
+    print 'Would you like to remove current subs? (y/n) '
+    to_remove = check_input()
+    if to_remove:
+        cfg_file.close()
+        remove_subs(config)
+        cfg_file = open('config.ini', 'r+')
 
-to_modify = raw_input('Would you like to change this? (y/n) ')
+print 'Would you like to modify your subs? (y/n) '
 need_to_change = check_input()
 if (need_to_change):
     modify_subs(cfg_file, config)
